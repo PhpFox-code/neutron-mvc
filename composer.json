@@ -1,0 +1,17 @@
+{
+    "name": "phpredeye/phpfox-mvc",
+    "description": "PhpFox MVC Component",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Nam Nguyen",
+            "email": "nam.ngvan@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Phpfox\\Mvc\\": "src/"
+        }
+    },
+    "require": {}
+}
