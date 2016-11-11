@@ -117,6 +117,11 @@ namespace Phpfox\Mvc {
         {
 
         }
+
+        public function routing()
+        {
+            return $this->manager->get('routing');
+        }
     }
 }
 
