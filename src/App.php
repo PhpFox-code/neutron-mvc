@@ -3,7 +3,7 @@
 namespace Phpfox\Mvc {
 
     use Phpfox\EventManager\EventManagerInterface;
-    use Phpfox\Service\ServiceManager;
+    use Phpfox\ServiceManager\ServiceManager;
 
     /**
      * Class App
