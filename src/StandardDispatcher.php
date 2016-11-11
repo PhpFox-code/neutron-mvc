@@ -75,7 +75,7 @@ class StandardDispatcher implements DispatcherInterface
     {
         $stack = 0;
         $manager = App::instance()->getManager();
-        
+
         do {
             $result = $manager->get($this->controllerName)
                 ->dispatch($this->actionName);

@@ -1,91 +1,144 @@
 <?php
-namespace Phpfox\Mvc;
 
-use Phpfox\Service\ServiceManager;
+namespace Phpfox\Mvc {
 
-class App
-{
-    /**
-     * @var bool
-     */
-    private $initialized = false;
+    use Phpfox\EventManager\EventManagerInterface;
+    use Phpfox\Service\ServiceManager;
 
     /**
-     * @var App
+     * Class App
+     *
+     * @package Phpfox\Mvc
      */
-    private static $singleton;
-
-    /**
-     * @var ServiceManager
-     */
-    private $manager;
-
-    /**
-     * @var DispatcherInterface
-     */
-    private $dispatcher;
-
-    /**
-     * App constructor.
-     */
-    private function __construct()
+    class App
     {
-        $this->initialize();
-    }
+        /**
+         * @var App
+         */
+        private static $singleton;
+        /**
+         * @var bool
+         */
+        private $initialized = false;
+        /**
+         * @var ServiceManager
+         */
+        private $manager;
 
-    public static function instance()
-    {
-        if (null == self::$singleton) {
-            self::$singleton = new static();
+        /**
+         * @var DispatcherInterface
+         */
+        private $dispatcher;
+
+        /**
+         * @var EventManagerInterface
+         */
+        private $event;
+
+        /**
+         * App constructor.
+         */
+        private function __construct()
+        {
+            $this->initialize();
         }
-        return self::$singleton;
-    }
 
-    /**
-     * Load all database configuration. there are no items the test.
-     */
-    protected function initialize()
-    {
-        if ($this->initialized) {
-            return;
+        /**
+         * Load all database configuration. there are no items the test.
+         */
+        protected function initialize()
+        {
+            if ($this->initialized) {
+                return;
+            }
+            $this->initialized = true;
         }
-        $this->initialized = true;
+
+        public static function instance()
+        {
+            if (null == self::$singleton) {
+                self::$singleton = new static();
+            }
+            return self::$singleton;
+        }
+
+        /**
+         * @return ServiceManager
+         */
+        public function getManager()
+        {
+            if (null == $this->manager) {
+                $this->manager = new ServiceManager();
+            }
+            return $this->manager;
+        }
+
+        /**
+         * @param ServiceManager $manager
+         */
+        public function setManager($manager)
+        {
+            $this->manager = $manager;
+        }
+
+        /**
+         * @return DispatcherInterface
+         */
+        public function getDispatcher()
+        {
+            return $this->dispatcher;
+        }
+
+        /**
+         * @param DispatcherInterface $dispatcher
+         */
+        public function setDispatcher($dispatcher)
+        {
+            $this->dispatcher = $dispatcher;
+        }
+
+        /**
+         * @return EventManagerInterface
+         */
+        public function getEvent()
+        {
+            return $this->event;
+        }
+
+        /**
+         * @param EventManagerInterface $event
+         */
+        public function setEvent($event)
+        {
+            $this->event = $event;
+        }
+
+        public function dispatch()
+        {
+
+        }
+    }
+}
+
+namespace {
+
+    use Phpfox\Mvc\App;
+
+    /**
+     * @return App
+     */
+    function app()
+    {
+        return App::instance();
     }
 
     /**
-     * @return ServiceManager
+     * @param string $id
+     *
+     * @return mixed
      */
-    public function getManager()
+    function service($id)
     {
-        return $this->manager;
-    }
-
-    /**
-     * @param ServiceManager $manager
-     */
-    public function setManager($manager)
-    {
-        $this->manager = $manager;
-    }
-
-    /**
-     * @return DispatcherInterface
-     */
-    public function getDispatcher()
-    {
-        return $this->dispatcher;
-    }
-
-    /**
-     * @param DispatcherInterface $dispatcher
-     */
-    public function setDispatcher($dispatcher)
-    {
-        $this->dispatcher = $dispatcher;
-    }
-
-
-    public function dispatch()
-    {
+        return App::instance()->getManager()->get($id);
     }
 }
