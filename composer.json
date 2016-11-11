@@ -1,6 +1,6 @@
 {
   "name": "codelego/phpfox-mvc",
-  "description": "PhpFox MVC Component",
+  "description": "MVC pattern support library for phpfox framework.",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -15,5 +15,12 @@
       "Phpfox\\Mvc\\": "src/"
     }
   },
-  "require": {}
+  "autoload-dev": {
+    "psr-4": {
+      "Phpfox\\Mvc\\": "src/"
+    }
+  },
+  "require": {
+
+  }
 }
