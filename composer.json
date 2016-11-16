@@ -1,6 +1,6 @@
 {
   "name": "codelego/phpfox-mvc",
-  "description": "MVC pattern support library for phpfox framework.",
+  "description": "MVC library for phpfox framework.",
   "type": "library",
   "license": "MIT",
   "authors": [
