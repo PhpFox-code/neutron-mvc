@@ -3,7 +3,7 @@
 namespace Phpfox\Mvc;
 
 
-use Phpfox\ServiceManager\ServiceManager;
+use Phpfox\Service\ServiceManager;
 
 /**
  * Class StandardController
