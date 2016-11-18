@@ -2,10 +2,7 @@
 namespace Phpfox\Mvc;
 
 return [
-    'aliases'   => [
+    'services' => [
         'responder' => Responder::class,
-    ],
-    'factories' => [
-        Responder::class => null,
     ],
 ];

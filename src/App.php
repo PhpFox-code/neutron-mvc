@@ -124,26 +124,3 @@ namespace Phpfox\Mvc {
         }
     }
 }
-
-namespace {
-
-    use Phpfox\Mvc\App;
-
-    /**
-     * @return App
-     */
-    function app()
-    {
-        return App::instance();
-    }
-
-    /**
-     * @param string $id
-     *
-     * @return mixed
-     */
-    function service($id)
-    {
-        return App::instance()->getManager()->get($id);
-    }
-}

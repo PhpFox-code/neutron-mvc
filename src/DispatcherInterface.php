@@ -44,5 +44,5 @@ interface DispatcherInterface
     /**
      * @return $this
      */
-    public function dispatch();
+    public function resolve();
 }

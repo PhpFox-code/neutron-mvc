@@ -3,8 +3,6 @@
 namespace Phpfox\Mvc;
 
 
-use Phpfox\Service\ServiceManager;
-
 /**
  * Class StandardController
  *
@@ -12,32 +10,19 @@ use Phpfox\Service\ServiceManager;
  */
 class StandardController implements ControllerInterface
 {
-    /**
-     * @var ServiceManager
-     */
-    protected $serviceManager;
-
-    /**
-     * StandardController constructor.
-     *
-     * @param ServiceManager $serviceManager
-     */
-    public function __construct(ServiceManager $serviceManager)
+    public function __construct()
     {
-        $this->serviceManager = $serviceManager;
-
         $this->initialize();
     }
 
     protected function initialize()
     {
-
     }
 
     /**
      * @inheritdoc
      */
-    public function dispatch($action)
+    public function resolve($action)
     {
         $method = 'action' . _camelize($action);
 

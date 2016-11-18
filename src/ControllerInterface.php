@@ -8,5 +8,5 @@ interface ControllerInterface
      *
      * @return mixed
      */
-    public function dispatch($action);
+    public function resolve($action);
 }

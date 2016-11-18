@@ -71,7 +71,7 @@ class StandardDispatcher implements DispatcherInterface
     /**
      * @inheritdoc
      */
-    public function dispatch()
+    public function resolve()
     {
         $stack = 0;
         $manager = App::instance()->getManager();
