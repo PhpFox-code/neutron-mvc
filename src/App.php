@@ -2,8 +2,6 @@
 
 namespace Phpfox\Mvc {
 
-    use Phpfox\EventManager\EventManagerInterface;
-
     /**
      * Class App
      *
@@ -24,11 +22,6 @@ namespace Phpfox\Mvc {
          * @var DispatcherInterface
          */
         private $dispatcher;
-
-        /**
-         * @var EventManagerInterface
-         */
-        private $event;
 
         /**
          * App constructor.
@@ -73,23 +66,7 @@ namespace Phpfox\Mvc {
         {
             $this->dispatcher = $dispatcher;
         }
-
-        /**
-         * @return EventManagerInterface
-         */
-        public function getEvent()
-        {
-            return $this->event;
-        }
-
-        /**
-         * @param EventManagerInterface $event
-         */
-        public function setEvent($event)
-        {
-            $this->event = $event;
-        }
-
+        
         public function dispatch()
         {
 
