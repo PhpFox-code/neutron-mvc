@@ -3,6 +3,8 @@ namespace Phpfox\Mvc;
 
 return [
     'services' => [
-        'responder' => Responder::class,
+        'map' => [
+            'responder' => [null, Responder::class,],
+        ],
     ],
 ];

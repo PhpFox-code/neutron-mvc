@@ -3,7 +3,6 @@
 namespace Phpfox\Mvc {
 
     use Phpfox\EventManager\EventManagerInterface;
-    use Phpfox\Service\ServiceManager;
 
     /**
      * Class App
@@ -20,10 +19,6 @@ namespace Phpfox\Mvc {
          * @var bool
          */
         private $initialized = false;
-        /**
-         * @var ServiceManager
-         */
-        private $manager;
 
         /**
          * @var DispatcherInterface
@@ -62,24 +57,6 @@ namespace Phpfox\Mvc {
             return self::$singleton;
         }
 
-        /**
-         * @return ServiceManager
-         */
-        public function getManager()
-        {
-            if (null == $this->manager) {
-                $this->manager = new ServiceManager();
-            }
-            return $this->manager;
-        }
-
-        /**
-         * @param ServiceManager $manager
-         */
-        public function setManager($manager)
-        {
-            $this->manager = $manager;
-        }
 
         /**
          * @return DispatcherInterface
@@ -120,7 +97,7 @@ namespace Phpfox\Mvc {
 
         public function routing()
         {
-            return $this->manager->get('routing');
+            return service('routing');
         }
     }
 }
