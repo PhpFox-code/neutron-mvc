@@ -10,6 +10,11 @@ class Responder
     protected $strategy;
 
     /**
+     * @var mixed
+     */
+    protected $content;
+
+    /**
      * @return StrategyInterface
      */
     public function getStrategy()
@@ -23,5 +28,22 @@ class Responder
     public function setStrategy($strategy)
     {
         $this->strategy = $strategy;
+    }
+
+    /**
+     * @param mixed $content
+     *
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+        return $this;
+    }
+
+    public function response()
+    {
+        $layout = service('layout');
+        return service('renderer')->render($layout);
     }
 }

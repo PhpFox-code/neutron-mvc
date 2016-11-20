@@ -26,7 +26,7 @@ class StandardController implements ControllerInterface
     {
         $method = 'action' . _camelize($action);
 
-        $this->{$method}();
+        return $this->{$method}();
     }
 
     /**
@@ -35,7 +35,7 @@ class StandardController implements ControllerInterface
      */
     public function forward($controller, $action)
     {
-        App::instance()->getDispatcher()->setControllerName($controller)
+        Application::instance()->getDispatcher()->setControllerName($controller)
             ->setActionName($action)->setDispatched(false);
     }
 }
