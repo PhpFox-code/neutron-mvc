@@ -24,7 +24,7 @@ class StandardController implements ControllerInterface
      */
     public function resolve($action)
     {
-        $method = 'action' . _camelize($action);
+        $method = 'action' . _inflect($action);
 
         return $this->{$method}();
     }

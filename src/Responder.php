@@ -43,7 +43,28 @@ class Responder
 
     public function response()
     {
-        $layout = service('layout');
+        $layout = service('layout')->prepare();
         return service('renderer')->render($layout);
+    }
+
+    /**
+     * @param string $path          External/Internal url
+     * @param int    $response_code Temporary = 302, Permanently =  301
+     */
+    public function redirect($path, $response_code = 302)
+    {
+        if (headers_sent()) {
+
+        } else {
+            http_response_code($response_code);
+            header('location: ' . $path);
+        }
+        $this->terminate();
+    }
+
+    public function terminate()
+    {
+        events()->trigger('onResponderTerminate');
+        exit();
     }
 }
