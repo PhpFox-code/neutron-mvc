@@ -75,7 +75,6 @@ class Application
             $this->actionName = $routeResult->getActionName();
         }
 
-        var_dump($this->controllerName, $this->actionName);
         do {
             $this->setDispatched(true);
             $content
