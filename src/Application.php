@@ -67,10 +67,11 @@ class Application
         $loop = 5;
         $content = null;
 
-        list($path, $host, $method) = _http_init_info();
+        list($path, $host, $method, $protocol) = _http_init_info();
+        $routing = service('routing');
 
         if (null == $this->controllerName) {
-            $routeResult = service('routing')->resolve($path, $host, $method);
+            $routeResult = $routing->resolve($path, $host, $method, $protocol);
             $this->controllerName = $routeResult->getControllerName();
             $this->actionName = $routeResult->getActionName();
         }
@@ -81,7 +82,6 @@ class Application
                 = (new $this->controllerName())->resolve($this->actionName);
         } while ($this->dispatched == false and --$loop > 0);
 
-        echo service('responder')->setContent($content)
-            ->response();
+        echo service('responder')->setContent($content)->response();
     }
 }
