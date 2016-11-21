@@ -68,7 +68,7 @@ class Application
         $content = null;
 
         list($path, $host, $method, $protocol) = _http_init_info();
-        $routing = service('routing');
+        $routing = service('router');
 
         if (null == $this->controllerName) {
             $routeResult = $routing->resolve($path, $host, $method, $protocol);
