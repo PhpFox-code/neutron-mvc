@@ -7,7 +7,7 @@ namespace Phpfox\Mvc;
  *
  * @package Phpfox\Mvc
  */
-class Application
+class Application implements DispatchInterface
 {
     /**
      * @var bool
@@ -54,6 +54,7 @@ class Application
     public function setDispatched($flag)
     {
         $this->dispatched = (bool)$flag;
+        return $this;
     }
 
     public function getFullActionName()

@@ -29,7 +29,7 @@ class StandardController implements ControllerInterface
         service('app')
             ->setDispatched(false)
             ->setControllerName($controller)
-            ->setActionName($action)
+//            ->setActionName($action)
             ;
 
         return false;
