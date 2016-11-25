@@ -2,44 +2,36 @@
 
 namespace Phpfox\Mvc;
 
+use Phpfox\View\ViewModel;
+
 class Responder
 {
     /**
-     * @var StrategyInterface
+     * @var int
      */
-    protected $strategy;
+    protected $code = 200;
 
     /**
      * @var mixed
      */
-    protected $content;
+    protected $data;
 
     /**
-     * @return StrategyInterface
+     * @return mixed|ViewModel
      */
-    public function getStrategy()
+    public function getData()
     {
-        return $this->strategy;
+        return $this->data;
     }
 
-    /**
-     * @param StrategyInterface $strategy
-     */
-    public function setStrategy($strategy)
-    {
-        $this->strategy = $strategy;
-    }
 
-    /**
-     * @param mixed $content
-     *
-     * @return $this
-     */
-    public function setContent($content)
+    public function setData($data)
     {
-        $this->content = $content;
+        $this->data = $data;
+
         return $this;
     }
+
 
     public function response()
     {
@@ -48,18 +40,38 @@ class Responder
     }
 
     /**
-     * @param string $path          External/Internal url
-     * @param int    $response_code Temporary = 302, Permanently =  301
+     * @param string $url  External/Internal url
+     * @param int    $code Optional, default 302, 301:  Permanently, 302:
+     *                     Temporary
      */
-    public function redirect($path, $response_code = 302)
+    public function redirect($url, $code = 302)
     {
-        if (headers_sent()) {
-
-        } else {
-            http_response_code($response_code);
-            header('location: ' . $path);
+        $this->code = $code;
+        if (!headers_sent()) {
+            http_response_code($code);
+            header('location: ' . $url);
         }
         $this->terminate();
+    }
+
+    /**
+     * @link https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+     *
+     * @param int $code
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        if (!headers_sent()) {
+            http_response_code((int)$code);
+        }
+        return $this;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
     }
 
     public function terminate()
