@@ -21,7 +21,6 @@
     }
   },
   "require": {
-    "codelego/phpfox-event-manager": "dev-master",
     "codelego/phpfox-service": "dev-master"
   }
 }
