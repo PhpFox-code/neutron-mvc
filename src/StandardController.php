@@ -1,12 +1,12 @@
 <?php
 
-namespace Phpfox\Mvc;
+namespace Neutron\Mvc;
 
 
 /**
  * Class StandardController
  *
- * @package Phpfox\Mvc
+ * @package Neutron\Mvc
  */
 class StandardController implements ControllerInterface
 {

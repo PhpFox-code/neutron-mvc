@@ -1,11 +1,11 @@
 <?php
 
-namespace Phpfox\Mvc;
+namespace Neutron\Mvc;
 
 /**
  * Class Application
  *
- * @package Phpfox\Mvc
+ * @package Neutron\Mvc
  */
 class Application implements DispatchInterface
 {

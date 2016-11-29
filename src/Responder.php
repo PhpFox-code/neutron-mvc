@@ -1,8 +1,8 @@
 <?php
 
-namespace Phpfox\Mvc;
+namespace Neutron\Mvc;
 
-use Phpfox\View\ViewModel;
+use Neutron\View\ViewModel;
 
 class Responder
 {

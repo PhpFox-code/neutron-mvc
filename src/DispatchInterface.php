@@ -1,11 +1,11 @@
 <?php
-namespace Phpfox\Mvc;
+namespace Neutron\Mvc;
 
 
 /**
  * Dispatch Interface
  *
- * @package Phpfox\Mvc
+ * @package Neutron\Mvc
  */
 interface DispatchInterface
 {

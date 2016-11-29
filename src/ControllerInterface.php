@@ -1,5 +1,5 @@
 <?php
-namespace Phpfox\Mvc;
+namespace Neutron\Mvc;
 
 interface ControllerInterface
 {
