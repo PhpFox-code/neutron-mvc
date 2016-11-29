@@ -1,5 +1,5 @@
 {
-  "name": "codelego/phpfox-mvc",
+  "name": "codelego/neutron-mvc",
   "description": "MVC library for phpfox framework.",
   "type": "library",
   "license": "MIT",
@@ -21,6 +21,6 @@
     }
   },
   "require": {
-    "codelego/phpfox-service": "dev-master"
+    "codelego/neutron-service": "dev-master"
   }
 }
